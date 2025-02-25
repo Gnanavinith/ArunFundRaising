@@ -14,7 +14,7 @@ const LoginForm = () => {
       .post("http://localhost:7000/login", { email, password })
       .then((result) => {
         console.log(result);
-        if (result.data === "success") {
+        if (result.data.message === "Login successful") {
           navigate("/homepage");
         } else {
           setPasswordError(true);
@@ -22,6 +22,7 @@ const LoginForm = () => {
       })
       .catch((err) => console.log(err));
   };
+  
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-pink-300 to-pink-700 p-4">
