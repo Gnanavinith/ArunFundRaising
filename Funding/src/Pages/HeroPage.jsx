@@ -5,6 +5,7 @@ import { Search, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
+import Funding from "../assets/Funding.png"
 
 //--------------------Slides--------------------------
 const slides = [
@@ -94,13 +95,13 @@ const HeroPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
             <div>
               <img
-                className="w-full border border-7 border-pink-700 rounded-xl p-5 md:p-0"
-                src="/images/istockphoto-1385970223-612x612.jpg"
+                className="w-full shadow-2xl rounded-2xl p-5 md:p-0"
+                src={Funding}
                 alt="Business Project"
               />
             </div>
-            <div className="border bg-rose-100 border-pink-700 rounded-xl py-6 px-6 md:py-8 md:px-10 text-center">
-              <h1 className="text-4xl md:text-6xl font-serif text-pink-800">
+            <div className=" bg-rose-100  rounded-2xl py-6 px-6 md:py-8 md:px-10 text-center">
+              <h1 className="text-4xl md:text-6xl font-bold  text-pink-800">
                 Fund Raiser
               </h1>
               <h2 className="text-2xl md:text-4xl text-gray-700 mt-4">
@@ -124,8 +125,8 @@ const HeroPage = () => {
           </div>
         </div>
 
-        <div className="border bg-rose-100 md:w-full rounded-xl border-pink-700 mt-12 py-4 px-4 text-center border-5">
-          <div className="overflow-hidden bg-rose-100 mt-4 md:max-w-xl mx-auto relative border rounded-lg border-pink-700 p-3">
+        <div className=" bg-rose-100 md:w-full rounded-2xl shadow-2xl mt-12 py-4 px-4 text-center">
+          <div className="overflow-hidden bg-rose-100 mt-4 md:max-w-xl mx-auto relative border rounded-lg border-pink-200 p-3">
             <motion.div
               key={currentSlide}
               initial={{ x: "100%" }}
@@ -148,18 +149,16 @@ const HeroPage = () => {
         </div>
         {/* -------------------------------------Funding Zone----------------------------------- */}
         <div className="max-w-7xl mx-auto mt-12 px-4">
-          <h1 className="text-3xl md:text-5xl text-center font-bold">
+          <h1 className="text-3xl md:text-5xl text-center font-bold text-rose-700">
             FUNDING ZONE
           </h1>
-          <div className="text-center">
-            ----------------------------------------
-          </div>
+         
 
           {/* --------------------------------------SearchBar------------------------------------------ */}
 
           <div className="relative w-full max-w-md mx-auto p-2 sm:p-4">
             {/* Search Input */}
-            <div className="flex items-center border border-pink-700 rounded-lg overflow-hidden shadow-sm w-full max-w-lg mx-auto bg-white">
+            <div className="flex items-center rounded-lg overflow-hidden shadow-2xl border w-full max-w-lg mx-auto ">
               <button className="p-2 sm:p-3" onClick={() => setOpen(!open)}>
                 <Search className="w-5 h-5 sm:w-6 sm:h-6 text-gray-500" />
               </button>
@@ -177,43 +176,44 @@ const HeroPage = () => {
               )}
             </div>
           </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10 p-6">
+  {filterUsers.map((cart) => (
+    <div
+      key={cart.id}
+      className="bg-rose-100  p-6 rounded-2xl hover:shadow-2xl transition-transform transform hover:scale-105 backdrop-blur-lg shadow-2xl"
+    >
+      <h1 className="text-2xl text-gray-800 font-bold text-center">
+        <span className="text-rose-800 text-3xl">{cart.title}</span>
+      </h1>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 p-6">
-            {filterUsers.map((cart) => (
-              <div
-                key={cart.id}
-                className="border bg-rose-100 border-pink-700 p-5 rounded-xl"
-              >
-                <h1 className="text-2xl text-gray-700 font-semibold">
-                  <span className="text-pink-700">{cart.title}</span>
-                </h1>
-                <img
-                  className="my-4 border border-pink-700 w-full h-48 object-cover rounded-lg"
-                  src={cart.image}
-                  alt="Cart Image"
-                />
-                <div className="text-gray-700 text-lg leading-8">
-                  {cart.about2}{" "}
-                  <Link to = {`/cart/${cart._id}`}>
-                    <span className="border border-pink-800 p-1 rounded-lg text-pink-800 bg-white">
-                      View More
-                    </span>
-                  </Link>
-                </div>
-                <div className="mt-2 p-2">
-                  <span className=" font-bold border rounded-lg border-2 border-pink-700 p-1 me-3">
-                    Sectors
-                  </span>{" "}
-                  {cart.companytype}
-                </div>
-                <Link to={`/cart/${cart._id}`}>
-                  <button className="border border-pink-700 border-4 rounded-lg p-2 mt-4 w-full text-lg font-semibold">
-                    Start Funding
-                  </button>
-                </Link>
-              </div>
-            ))}
-          </div>
+      <img
+        className="my-4  w-full h-52 object-cover rounded-xl"
+        src={cart.image}
+        alt={cart.title}
+      />
+
+      <div className="text-gray-700 text-lg text-center px-4 leading-7 mt-5">
+        {cart.about2}{" "}
+        <Link to={`/cart/${cart._id}`} className="inline-block">
+          <span className="p-3 rounded-lg text-pink-800 bg-white hover:bg-pink-700 hover:text-white transition duration-300">
+            View More
+          </span>
+        </Link>
+      </div>
+
+      <div className="mt-5 flex items-center justify-center gap-2">
+       
+        <span className="text-gray-800 text-2xl ">{cart.companytype}</span>
+      </div>
+
+      <Link to={`/cart/${cart._id}`}>
+        <button className="mt-5 w-full py-3 rounded-xl text-lg font-semibold text-pink-700 bg-white hover:bg-pink-700 hover:text-white transition duration-300 shadow-md hover:shadow-lg">
+          Start Funding
+        </button>
+      </Link>
+    </div>
+  ))}
+</div>
 
           {/* ---------------------------reveiws----------------------------- */}
           <div className="max-w-4xl bg-rose-100 mx-auto mt-10 px-4 text-center relative">

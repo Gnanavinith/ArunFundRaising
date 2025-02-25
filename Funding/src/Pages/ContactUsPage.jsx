@@ -54,8 +54,8 @@ const ContactUsPage = () => {
                   key={country}
                   className={`px-6 py-2 font-semibold rounded-lg transition-all ${
                     selectedCountry === country
-                      ? "bg-white text-pink-800 shadow-lg"
-                      : "bg-white text-pink-800 text-pink-700 hover:bg-blue-700"
+                      ? "bg-white text-pink-800 shadow-2xl hover:bg-pink-800 hover:text-white"
+                      : "bg-white text-pink-800 shadow-2xl hover:bg-pink-800 hover:text-white "
                   }`}
                   onClick={() => handleCountrySelection(country)}
                 >
